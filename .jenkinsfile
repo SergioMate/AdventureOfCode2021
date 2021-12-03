@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+     stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    scmVars = checkout scm
+                    echo 'scm - commit id: ' + scmVars.GIT_COMMIT
+                    echo 'scm - branch   : ' + scmVars.GIT_BRANCH
+                }
+            }
+        }
+        
+        stage('Static Analysis') {
+            steps{
+                sh xenon --max-absolute B --max-modules A --max-average A
+            }
+        }
+        
+        stage('UnitTests') {
+            steps {
+                sh coverage run -m unittest discover
+                sh coverage xml --fail-under=75
+            }
+        }
+    }
+}
