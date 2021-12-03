@@ -2,6 +2,7 @@
 
 import io
 
+
 # Return a list of the lines of the file
 def file2list(filename):
     """Return a list of the lines of the file"""
