@@ -1,4 +1,4 @@
-"""Sonat Sweep"""
+"""Sonar Sweep"""
 
 
 def add_window(depths, window, start=0):
