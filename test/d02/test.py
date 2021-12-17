@@ -3,7 +3,7 @@
 import unittest
 import os
 
-from app.d02.dive import divingPlanning, moveAdvanced
+from app.d02.dive import diving_planning, move_advanced
 from app.utils import file2list
 
 
@@ -15,13 +15,13 @@ class TestD02(unittest.TestCase):
 
     def test_movement(self):
         """Test the diving planning"""
-        finalPosition=divingPlanning(file2list(self.input_path))
-        self.assertEqual(150, finalPosition.horizontal*finalPosition.depth)
+        final_position=diving_planning(file2list(self.input_path))
+        self.assertEqual(150, final_position.horizontal*final_position.depth)
 
     def test_movement_advanced(self):
         """Test the diving planning based on the advanced movement"""
-        finalPosition=divingPlanning(file2list(self.input_path), moveAdvanced)
-        self.assertEqual(900, finalPosition.horizontal*finalPosition.depth)
+        final_position=diving_planning(file2list(self.input_path), move_advanced)
+        self.assertEqual(900, final_position.horizontal*final_position.depth)
 
 
 if __name__ == "__main__":
