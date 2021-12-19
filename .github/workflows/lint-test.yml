@@ -17,20 +17,10 @@ jobs:
         pip install pylint flake8
     - name: Analysing the code with pylint
       run: |
-        pylint app test --output-format=colorized,text:code-pylint-report.txt
-    - name: Archive pylint artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: code-pylint-report
-        path: code-pylint-report.txt
+        pylint app test --output-format=colorized
     - name: Analysing the code with flake8
       run: |
-        flake8 --count --show-source --max-complexity=10 --statistics --output-file=code-flake8-report.txt --tee
-    - name: Archive flake8 artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: code-flake8-report
-        path: code-flake8-report.txt
+        flake8 --count --show-source --max-complexity=10 --statistics
     
   test:
     runs-on: ubuntu-latest
