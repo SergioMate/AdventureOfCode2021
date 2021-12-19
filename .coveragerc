@@ -5,7 +5,7 @@ command_line = -m unittest discover
 directory = reports/coverage/html
 
 [report]
-show-missing = True
+show_missing = True
 sort = -miss
 exclude_lines =
     # Have to re-enable the standard pragma
