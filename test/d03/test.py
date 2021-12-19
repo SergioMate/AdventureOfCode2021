@@ -18,5 +18,6 @@ class TestD03(unittest.TestCase):
         power_consumption = PowerConsumption(file2list(self.input_path))
         self.assertEqual(198, power_consumption.gamma * power_consumption.epsilon)
 
+
 if __name__ == "__main__":
     unittest.main()

@@ -31,9 +31,11 @@ def extract_gamma(binary_codes):
         bin_gamma.append(statistics.mode(list(zip(*binary_codes))[indx]))
     return bin2int(bin_gamma)
 
+
 if __name__ == '__main__':
     from app.utils import file2list
     inputFile = file2list("input.txt")
     power_consuption = PowerConsumption(inputFile)
-    print("part 1: " + str(power_consuption.gamma * power_consuption.epsilon))
+    print("part 1: " + str(
+        power_consuption.gamma * power_consuption.epsilon))
     input()
