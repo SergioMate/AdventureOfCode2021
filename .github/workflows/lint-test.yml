@@ -36,9 +36,9 @@ jobs:
         pip install coverage
     - name: Test with unittest
       run: |
-        coverage run -m unittest discover
-        coverage report --show-missing --sort=miss
-        coverage html --directory=reports/coverage/html --fail-under=80
+        coverage run
+        coverage html
+        coverage report
     - name: Archive coverage artifacts
       uses: actions/upload-artifact@v2
       with:
