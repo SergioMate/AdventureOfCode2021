@@ -17,10 +17,13 @@ jobs:
         pip install pylint flake8
     - name: Analysing the code with pylint
       run: |
-        pylint app test --output-format=colorized
+        EXIT_CODE = pylint app test --output-format=colorized
     - name: Analysing the code with flake8
       run: |
         flake8 --count --show-source --max-complexity=10 --statistics
+    - name: Return exit code
+      run: |
+        exit $EXIT_CODE
     
   test:
     runs-on: ubuntu-latest
