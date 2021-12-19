@@ -1,9 +1,9 @@
-name: Pylint + Test
+name: lint-test
 
 on: [push, pull_request]
 
 jobs:
-  pylint:
+  lint:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -17,15 +17,12 @@ jobs:
         pip install pylint flake8
     - name: Analysing the code with pylint
       run: |
-        pylint $(find . -name "*.py" | xargs)
-    - name: Lint with flake8
+        pylint app test
+    - name: Analysing the code with flake8
       run: |
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E,F,W,C90 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        flake8 --count --show-source --max-complexity=10 --statistics
     
-  unittest:
+  test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
