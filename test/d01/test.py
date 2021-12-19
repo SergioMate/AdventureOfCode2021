@@ -3,7 +3,7 @@
 import unittest
 import os
 
-from app.d01.sonarsweep import number_of_increments
+from app.d01.sonar_sweep import number_of_increments
 from app.utils import file2list
 
 
