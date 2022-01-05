@@ -14,7 +14,8 @@ class PowerConsumption:
         """Return gamma rate"""
         bin_gamma = []
         for indx in range(0, len(self._binary_codes[0])):
-            bin_gamma.append(statistics.mode(list(zip(*self._binary_codes))[indx]))
+            bin_gamma.append(
+                statistics.mode(list(zip(*self._binary_codes))[indx]))
         return bin2int(bin_gamma)
 
     def extract_epsilon(self):
