@@ -9,7 +9,7 @@ class PowerConsumption:
         self._binary_codes = binary_codes
         self._gamma = self.extract_gamma()
         self._epsilon = self.extract_epsilon()
-    
+
     def extract_gamma(self):
         """Return gamma rate"""
         bin_gamma = []
