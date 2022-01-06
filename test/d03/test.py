@@ -1,10 +1,9 @@
 """Binary Diagnostic Test"""
 
-import unittest
-import os
-
 from app.d03.binary_diagnostic import PowerConsumption, LifeSupport
 from app.utils import file2list
+import os
+import unittest
 
 
 class TestD03(unittest.TestCase):
@@ -18,7 +17,7 @@ class TestD03(unittest.TestCase):
         power_consumption = PowerConsumption(file2list(self.input_path))
         self.assertEqual(
             198, power_consumption.gamma * power_consumption.epsilon)
-        
+
     def test_life_support(self):
         """Test the life support"""
         life_support = LifeSupport(file2list(self.input_path))

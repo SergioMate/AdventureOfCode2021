@@ -31,8 +31,8 @@ class PowerConsumption:
     def epsilon(self):
         """epsilon property getter"""
         return self._epsilon
-    
-    
+
+
 class LifeSupport:
     """LifeSupport"""
     def __init__(self, binary_codes):
@@ -72,7 +72,7 @@ class LifeSupport:
 
 
 def mode(binary_codes, indx):
-    """Return the most common value in an index if is unique or 1 if 
+    """Return the most common value in an index if is unique or 1 if
     several values coincide"""
     _mode = 1
     multimode = statistics.multimode(list(zip(*binary_codes))[indx])
