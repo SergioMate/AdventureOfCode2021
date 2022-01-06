@@ -1,6 +1,7 @@
 """Binary Diagnostic"""
-from app.utils import bin2int
 import statistics
+
+from app.utils import bin2int
 
 
 class PowerConsumption:

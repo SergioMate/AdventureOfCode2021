@@ -1,9 +1,10 @@
 """Binary Diagnostic Test"""
 
+import unittest
+import os
+
 from app.d03.binary_diagnostic import PowerConsumption, LifeSupport
 from app.utils import file2list
-import os
-import unittest
 
 
 class TestD03(unittest.TestCase):
