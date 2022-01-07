@@ -47,17 +47,17 @@ class LifeSupport:
 
     def extract_co2_scrubber(self):
         """Return co2 scrubber rate"""
-        return self.extract_generic(lambda x:~x & 1)
+        return self.extract_generic(lambda x: ~x & 1)
 
     def extract_generic(self, function):
         """Iterates over binary_codes applying function filter until it gets
         last value"""
         binary_codes = self._binary_codes.copy()
         for indx in range(0, len(self._binary_codes[0])):
-            bit_criteria = function(mode(binary_codes, indx))
-            bit_filter = lambda code, i = indx, criteria = bit_criteria: \
-                int(code[i]) == criteria
-            binary_codes = list(filter(bit_filter, binary_codes))
+            bit_value = function(mode(binary_codes, indx))
+            binary_codes = list(filter(
+                lambda code, i=indx, value=bit_value: int(code[i]) == value,
+                binary_codes))
             if len(binary_codes) == 1:
                 break
         return bin2int(binary_codes[0])
