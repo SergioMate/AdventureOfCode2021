@@ -55,7 +55,8 @@ class LifeSupport:
         binary_codes = self._binary_codes.copy()
         for indx in range(0, len(self._binary_codes[0])):
             bit_criteria = function(mode(binary_codes, indx))
-            bit_filter = lambda code: int(code[indx]) == bit_criteria
+            bit_filter = lambda code, i = indx, criteria = bit_criteria: \
+                int(code[i]) == criteria
             binary_codes = list(filter(bit_filter, binary_codes))
             if len(binary_codes) == 1:
                 break
