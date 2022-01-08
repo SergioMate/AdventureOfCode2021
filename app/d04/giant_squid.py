@@ -74,21 +74,21 @@ class Bingo:
     def __init__(self, _bingo_board):
         self._drum = Drum(list(map(int, _bingo_board[0].split(","))))
         self._boards = extract_boards(_bingo_board[1:])
-        self._winner = None
+        self._win_scores = []
         self.play()
 
     def play(self):
         """Play bingo"""
-        while self._winner is None and self._drum.has_next():
+        remaining_boards = self._boards.copy()
+        while len(self._win_scores) < len(self._boards) \
+                and self._drum.has_next():
             actual = self._drum.next()
-            for board in self._boards:
+            for board in remaining_boards:
                 board.check(actual)
                 if board.is_winner():
-                    self._winner = board
-                    break
-            else:
-                continue
-            break
+                    self._win_scores.append(sum(board.unmarked) * actual)
+            remaining_boards = [brd for brd in remaining_boards
+                                if not brd.is_winner()]
 
     @property
     def drum(self):
@@ -96,9 +96,14 @@ class Bingo:
         return self._drum
 
     @property
-    def winner(self):
-        """Gets bingo's winner board"""
-        return self._winner
+    def winner_score(self):
+        """Gets bingo's winner score"""
+        return self._win_scores[0]
+
+    @property
+    def loser_score(self):
+        """Gets bingo's loser score"""
+        return self._win_scores[len(self._boards) - 1]
 
 
 def extract_boards(_bingo_boards):
@@ -117,5 +122,6 @@ if __name__ == '__main__':
     from app.utils import file2list
     inputFile = file2list("input.txt")
     bingo = Bingo(inputFile)
-    print("part 1: " + str(sum(bingo.winner.unmarked) * bingo.drum.actual))
+    print("part 1: " + str(bingo.winner_score))
+    print("part 2: " + str(bingo.loser_score))
     input()
