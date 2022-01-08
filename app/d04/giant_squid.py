@@ -91,11 +91,6 @@ class Bingo:
                                 if not brd.is_winner()]
 
     @property
-    def drum(self):
-        """Gets bingo's drum"""
-        return self._drum
-
-    @property
     def winner_score(self):
         """Gets bingo's winner score"""
         return self._win_scores[0]
